@@ -1,0 +1,78 @@
+
+"""Implement basic list operations."""
+
+
+def append(list1, list2):
+    """Append the second list to the first."""
+    result = []
+    for item in list1:
+        result.append(item)
+    for item in list2:
+        result.append(item)
+    return result
+
+
+def concat(lists):
+    """Combine all lists into one list."""
+    result = []
+    for current_list in lists:
+        for element in current_list:
+            result.append(element)
+    return result
+
+
+def filter(function, list1):  # pylint: disable=redefined-builtin
+    """Return items that satisfy the predicate."""
+    result = []
+    for element in list1:
+        if function(element):
+            result.append(element)
+    return result
+
+
+def length(list1):
+    """Count the items in a list."""
+    count = 0
+    for _ in list1:
+        count += 1
+    return count
+
+
+def map(function, list1):  # pylint: disable=redefined-builtin
+    """Apply a function to each item."""
+    result = []
+    for element in list1:
+        result.append(function(element))
+    return result
+
+
+def foldl(function, list1, initial):
+    """Fold items from left to right."""
+    accumulator = initial
+    for element in list1:
+        accumulator = function(accumulator, element)
+    return accumulator
+
+
+def foldr(function, list1, initial):
+    """Fold items from right to left."""
+    accumulator = initial
+    index = length(list1) - 1
+
+    while index >= 0:
+        accumulator = function(accumulator, list1[index])
+        index -= 1
+
+    return accumulator
+
+
+def reverse(list1):
+    """Return a reversed copy of the list."""
+    result = []
+    index = length(list1) - 1
+
+    while index >= 0:
+        result.append(list1[index])
+        index -= 1
+
+    return result
